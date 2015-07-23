@@ -1,3 +1,3 @@
 /// <reference path="./reference.ts" />
 
-angular.module('myApp',[]);
+angular.module('myApp',['controllers', 'services']);

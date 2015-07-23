@@ -6,14 +6,37 @@
 		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
 
 	</head>
-	<body>		
+	<body ng-app="myApp">		
 		<div class="jumbotron">
 			<div class="container">
 				<h1>AngularJS & TypeScript</h1>
 				<p>Warsztaty Front-End, Bielsko-Biała, 2015</p>
 			</div>
 		</div>		
-		
+		<div class="container" ng-controller="MainController">						
+			<form class="col-sm-9">
+				<div class="form-group">
+					<label>Szukaj po nazwie produktu</label>
+					<input type="text" class="form-control" ng-model="search.name"/>
+					<label>Szukaj po opisie</label>
+					<input type="text" class="form-control" ng-model="search.description"/>
+					<label>Szukaj po cenie</label>
+					<input type="text" class="form-control" ng-model="search.cost"/>
+				</div>
+			</form>
+			<div ng-repeat="item in pizzas | filter: search">
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img ng-src="{{item.imageUrl}}"/>
+				  <div class="caption">
+					<h3>{{item.name}}</h3>
+					<p>{{item.description}}</p>
+					<h4>Cena: {{item.cost + ' zł'}}</h3>
+				  </div>
+				</div>
+			  </div>
+			</div>			
+		</div>
 		
 		<!--Scripts-->
         <script src="vendor/jquery-1.9.1.min.js"></script>
